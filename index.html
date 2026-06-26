@@ -19,13 +19,14 @@
     --text: #1f2328;
     --text2: #57606a;
     --brand: #b45309;   /* 쿠싱: 호박색 */
+    --fscale: 1;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: 'Pretendard', 'Noto Sans KR', -apple-system, sans-serif;
     background: var(--bg);
     color: var(--text);
-    font-size: 13px;
+    font-size: calc(13px * var(--fscale, 1));
     line-height: 1.5;
     min-height: 100vh;
   }
@@ -38,10 +39,10 @@
     position: sticky; top: 0; z-index: 100;
   }
   .header-inner { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 4px; }
-  .logo-badge { background: #b45309; color: #fff; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
+  .logo-badge { background: #b45309; color: #fff; font-size: calc(10px * var(--fscale, 1)); font-weight: 700; padding: 3px 8px; border-radius: 4px; letter-spacing: 0.5px; }
   header h1 { font-size: 18px; font-weight: 700; color: var(--text); }
-  .meta { color: var(--text2); font-size: 11px; }
-  .source-link { color: var(--accent2); font-size: 11px; text-decoration: none; }
+  .meta { color: var(--text2); font-size: calc(11px * var(--fscale, 1)); }
+  .source-link { color: var(--accent2); font-size: calc(11px * var(--fscale, 1)); text-decoration: none; }
   .source-link:hover { text-decoration: underline; }
 
   /* ── TAB BAR ── */
@@ -52,8 +53,17 @@
     overflow-x: auto; scrollbar-width: none;
   }
   .tab-bar::-webkit-scrollbar { display: none; }
+  .font-zoom-btn {
+    display: flex; align-items: center; gap: 3px; flex-shrink: 0;
+    margin: 4px 4px 4px 6px; padding: 5px 10px;
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 6px;
+    color: var(--accent2); font-size: calc(11px * var(--fscale, 1)); font-weight: 700;
+    cursor: pointer; user-select: none; white-space: nowrap; transition: background .15s;
+  }
+  .font-zoom-btn:hover { background: var(--border); }
+  .font-zoom-btn .fz-icon { font-size: calc(12px * var(--fscale, 1)); }
   .tab-bar-inner { max-width: 960px; margin: 0 auto; display: flex; align-items: center; gap: 2px; padding: 0 8px; }
-  .tab { padding: 8px 12px; font-size: 12px; color: var(--text2); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s, border-color .15s; user-select: none; }
+  .tab { padding: 8px 12px; font-size: calc(12px * var(--fscale, 1)); color: var(--text2); cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; transition: color .15s, border-color .15s; user-select: none; }
   .tab:hover { color: var(--text); }
   .tab.active { color: var(--accent2); border-bottom-color: var(--accent2); }
   .tab-abbr-wrap { display: flex; align-items: center; padding: 4px 6px; margin-left: auto; flex-shrink: 0; position: relative; }
@@ -70,9 +80,9 @@
 
   /* ── CARD ── */
   .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin-bottom: 10px; }
-  .card-header { background: var(--surface2); padding: 8px 12px; font-size: 12px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .card-header { background: var(--surface2); padding: 8px 12px; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid var(--border); cursor: pointer; display: flex; align-items: center; justify-content: space-between; user-select: none; }
   .card-header .ch-title { display: flex; align-items: center; gap: 8px; }
-  .card-header .toggle { font-size: 14px; transition: transform .2s; }
+  .card-header .toggle { font-size: calc(14px * var(--fscale, 1)); transition: transform .2s; }
   .card-header.open .toggle { transform: rotate(180deg); }
   .card-body { padding: 10px 12px; }
   .card-body.collapsed { display: none; }
@@ -80,11 +90,11 @@
   /* ── STAT ── */
   .stat-row { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
   .stat-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; flex: 1; text-align: center; min-width: 90px; }
-  .stat-val { font-size: 18px; font-weight: 700; color: var(--accent2); }
-  .stat-lbl { font-size: 10px; color: var(--text2); margin-top: 2px; line-height: 1.4; }
+  .stat-val { font-size: calc(18px * var(--fscale, 1)); font-weight: 700; color: var(--accent2); }
+  .stat-lbl { font-size: calc(10px * var(--fscale, 1)); color: var(--text2); margin-top: 2px; line-height: 1.4; }
 
   /* ── GRADE BADGES ── */
-  .grade { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; white-space: nowrap; position: relative; cursor: help; }
+  .grade { display: inline-block; padding: 1px 6px; border-radius: 3px; font-size: calc(10px * var(--fscale, 1)); font-weight: 700; white-space: nowrap; position: relative; cursor: help; }
   .grade-strong-high { background: #dafbe1; color: #116329; border: 1px solid #1a7f37; }
   .grade-strong-mod  { background: #dafbe1; color: #116329; border: 1px solid #57606a; }
   .grade-strong-low  { background: #fff8c5; color: #7d4e00; border: 1px solid #9a6700; }
@@ -95,7 +105,7 @@
   .grade::after {
     content: attr(data-tip);
     display: none; position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
-    background: #1f2328; color: #e6edf3; font-size: 11px; font-weight: 400; line-height: 1.5;
+    background: #1f2328; color: #e6edf3; font-size: calc(11px * var(--fscale, 1)); font-weight: 400; line-height: 1.5;
     padding: 6px 10px; border-radius: 6px; white-space: nowrap; z-index: 500;
     pointer-events: none; box-shadow: 0 4px 12px rgba(0,0,0,.25);
   }
@@ -110,12 +120,12 @@
   .rec-item { padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 8px; align-items: flex-start; }
   .rec-item:last-child { border-bottom: none; }
   .rec-badges { display: flex; gap: 4px; flex-shrink: 0; margin-top: 2px; flex-wrap: nowrap; }
-  .rec-num { font-size: 10px; font-weight: 700; color: #b45309; background: #fef3c7; border: 1px solid #d97706; border-radius: 3px; padding: 1px 5px; flex-shrink: 0; margin-top: 2px; }
-  .rec-text { font-size: 12px; color: var(--text); line-height: 1.55; }
+  .rec-num { font-size: calc(10px * var(--fscale, 1)); font-weight: 700; color: #b45309; background: #fef3c7; border: 1px solid #d97706; border-radius: 3px; padding: 1px 5px; flex-shrink: 0; margin-top: 2px; }
+  .rec-text { font-size: calc(12px * var(--fscale, 1)); color: var(--text); line-height: 1.55; }
   .rec-text strong { color: var(--accent2); }
 
   /* ── ALERT ── */
-  .alert { padding: 8px 12px; border-radius: 6px; font-size: 12px; margin: 8px 0; display: flex; gap: 8px; align-items: flex-start; }
+  .alert { padding: 8px 12px; border-radius: 6px; font-size: calc(12px * var(--fscale, 1)); margin: 8px 0; display: flex; gap: 8px; align-items: flex-start; }
   .alert-danger  { background: #ffebe9; border-left: 3px solid var(--red);    color: #82071e; }
   .alert-info    { background: #ddf4ff; border-left: 3px solid var(--accent2); color: #0550ae; }
   .alert-warn    { background: #fff8c5; border-left: 3px solid var(--yellow); color: #7d4e00; }
@@ -123,8 +133,8 @@
   .alert-orange  { background: #fff7ed; border-left: 3px solid #b45309;       color: #7c2d12; }
 
   /* ── TABLE ── */
-  .g-table { width: 100%; border-collapse: collapse; font-size: 11px; margin: 6px 0; }
-  .g-table th { background: var(--surface2); color: var(--text2); padding: 6px 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; text-align: left; border-bottom: 1px solid var(--border); }
+  .g-table { width: 100%; border-collapse: collapse; font-size: calc(11px * var(--fscale, 1)); margin: 6px 0; }
+  .g-table th { background: var(--surface2); color: var(--text2); padding: 6px 8px; font-size: calc(10px * var(--fscale, 1)); text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; text-align: left; border-bottom: 1px solid var(--border); }
   .g-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
   .g-table tr:last-child td { border-bottom: none; }
   .g-table tr:hover td { background: rgba(0,0,0,0.02); }
@@ -132,17 +142,17 @@
 
   /* ── ACCORDION ── */
   .acc { border: 1px solid var(--border); border-radius: 6px; margin-bottom: 6px; overflow: hidden; }
-  .acc-hdr { background: var(--surface2); padding: 8px 12px; font-size: 12px; font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+  .acc-hdr { background: var(--surface2); padding: 8px 12px; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: var(--text); cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
   .acc-hdr:hover { background: #e5e9ef; }
-  .acc-hdr .acc-arrow { font-size: 11px; color: var(--text2); transition: transform .2s; }
+  .acc-hdr .acc-arrow { font-size: calc(11px * var(--fscale, 1)); color: var(--text2); transition: transform .2s; }
   .acc-hdr.open .acc-arrow { transform: rotate(90deg); }
-  .acc-body { display: none; padding: 10px 12px; font-size: 12px; line-height: 1.6; }
+  .acc-body { display: none; padding: 10px 12px; font-size: calc(12px * var(--fscale, 1)); line-height: 1.6; }
   .acc-body p { margin-bottom: 6px; }
   .acc-body p:last-child { margin-bottom: 0; }
 
   /* ── LABELS ── */
-  .q-label { display: inline-block; background: #b45309; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-right: 6px; flex-shrink: 0; }
-  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; white-space: nowrap; }
+  .q-label { display: inline-block; background: #b45309; color: #fff; font-size: calc(10px * var(--fscale, 1)); font-weight: 700; padding: 2px 7px; border-radius: 3px; margin-right: 6px; flex-shrink: 0; }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: calc(10px * var(--fscale, 1)); font-weight: 600; white-space: nowrap; }
   .pill-danger  { background: #ffebe9; color: var(--red); }
   .pill-warn    { background: #fff8c5; color: var(--yellow); }
   .pill-info    { background: #ddf4ff; color: var(--accent2); }
@@ -150,7 +160,7 @@
   .pill-orange  { background: #fff7ed; color: #b45309; }
 
   /* ── VALUE tags ── */
-  .val { display: inline-block; background: #ddf4ff; color: #0550ae; border-radius: 3px; padding: 1px 7px; font-size: 11px; font-weight: 700; margin: 1px 2px; }
+  .val { display: inline-block; background: #ddf4ff; color: #0550ae; border-radius: 3px; padding: 1px 7px; font-size: calc(11px * var(--fscale, 1)); font-weight: 700; margin: 1px 2px; }
   .val-ok   { background: #dafbe1; color: #116329; }
   .val-warn { background: #fff8c5; color: #9a6700; }
   .val-bad  { background: #ffebe9; color: #cf222e; }
@@ -165,32 +175,32 @@
   /* ── ABBR ── */
   .abbr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 6px; }
   .abbr-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 5px; padding: 6px 10px; display: flex; flex-direction: column; gap: 2px; }
-  .abbr-term { font-weight: 700; color: var(--accent2); font-size: 12px; font-family: 'Courier New', monospace; white-space: nowrap; }
-  .abbr-def  { font-size: 11px; color: var(--text2); line-height: 1.45; }
+  .abbr-term { font-weight: 700; color: var(--accent2); font-size: calc(12px * var(--fscale, 1)); font-family: 'Courier New', monospace; white-space: nowrap; }
+  .abbr-def  { font-size: calc(11px * var(--fscale, 1)); color: var(--text2); line-height: 1.45; }
 
   ::-webkit-scrollbar { width: 5px; height: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: #c8d0d9; border-radius: 3px; }
 
-  small { color: var(--text2); font-size: 10px; }
+  small { color: var(--text2); font-size: calc(10px * var(--fscale, 1)); }
   .sec-sep { height: 1px; background: var(--border); margin: 10px 0; }
   .v-red    { color: var(--red); font-weight: 700; }
   .v-green  { color: var(--green); font-weight: 700; }
   .v-blue   { color: var(--accent2); font-weight: 700; }
   .v-orange { color: #b45309; font-weight: 700; }
   ul.blist  { list-style: none; padding: 0; }
-  ul.blist li { padding: 3px 0; border-bottom: 1px solid var(--border); font-size: 12px; }
+  ul.blist li { padding: 3px 0; border-bottom: 1px solid var(--border); font-size: calc(12px * var(--fscale, 1)); }
   ul.blist li:last-child { border-bottom: none; }
   ol.nlist  { padding-left: 18px; }
-  ol.nlist li { font-size: 12px; padding: 2px 0; }
+  ol.nlist li { font-size: calc(12px * var(--fscale, 1)); padding: 2px 0; }
 
   /* ── FLOW DIAGRAM ── */
-  .flow-box { background: #fff7ed; border: 2px solid #d97706; border-radius: 8px; padding: 10px 14px; text-align: center; font-size: 12px; font-weight: 600; color: #7c2d12; }
-  .flow-arrow { text-align: center; font-size: 18px; color: #b45309; margin: 4px 0; }
+  .flow-box { background: #fff7ed; border: 2px solid #d97706; border-radius: 8px; padding: 10px 14px; text-align: center; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: #7c2d12; }
+  .flow-arrow { text-align: center; font-size: calc(18px * var(--fscale, 1)); color: #b45309; margin: 4px 0; }
   .flow-split { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0; }
-  .flow-end-ok  { background: #dafbe1; border: 2px solid #1a7f37; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: 12px; font-weight: 600; color: #116329; }
-  .flow-end-bad { background: #ffebe9; border: 2px solid #cf222e; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: 12px; font-weight: 600; color: #82071e; }
-  .flow-end-mid { background: #ddf4ff; border: 2px solid #0550ae; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: 12px; font-weight: 600; color: #0550ae; }
+  .flow-end-ok  { background: #dafbe1; border: 2px solid #1a7f37; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: #116329; }
+  .flow-end-bad { background: #ffebe9; border: 2px solid #cf222e; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: #82071e; }
+  .flow-end-mid { background: #ddf4ff; border: 2px solid #0550ae; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: calc(12px * var(--fscale, 1)); font-weight: 600; color: #0550ae; }
 </style>
 </head>
 <body>
@@ -204,13 +214,14 @@
     <div style="text-align:center;margin-top:3px;line-height:1.5">
       <a href="https://doi.org/10.1210/jc.2008-0125" class="source-link" target="_blank">J Clin Endocrinol Metab 2008;93(5):1526–1540 ↗</a>
       <span class="meta"> · Nieman LK et al. (chair) · 공동후원: European Society of Endocrinology</span><br>
-      <span style="font-size:10px;color:var(--text2);font-style:italic">본 도구는 Endocrine Society 공식 승인 자료가 아닙니다</span>
+      <span style="font-size: calc(10px * var(--fscale, 1));color:var(--text2);font-style:italic">본 도구는 Endocrine Society 공식 승인 자료가 아닙니다</span>
     </div>
   </div>
 </header>
 
 <div class="tab-bar">
   <div class="tab-bar-inner">
+    <div id="font-zoom-btn" class="font-zoom-btn" onclick="cycleFontZoom()"><span class="fz-icon">🔠</span><span id="font-zoom-label">100%</span></div>
     <div class="tab active" onclick="showTab('overview')">🏠 개요</div>
     <div class="tab" onclick="showTab('who')">🎯 검사 대상</div>
     <div class="tab" onclick="showTab('initial')">🧪 초기 검사</div>
@@ -220,11 +231,11 @@
     <div class="tab" onclick="showTab('abbr')">📖 약어집</div>
     <div class="tab-abbr-wrap">
       <div style="position:relative;display:flex;align-items:center;flex-shrink:0">
-        <span style="position:absolute;left:8px;color:var(--text2);font-size:12px;pointer-events:none">🔍</span>
+        <span style="position:absolute;left:8px;color:var(--text2);font-size: calc(12px * var(--fscale, 1));pointer-events:none">🔍</span>
         <input id="abbr-input" type="text" placeholder="약어 검색" oninput="filterAbbr(this.value)"
-          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size:12px;width:120px;outline:none;"
+          style="background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:4px 8px 4px 26px;color:var(--text);font-size: calc(12px * var(--fscale, 1));width:120px;outline:none;"
           onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
-        <span id="abbr-count" style="position:absolute;right:7px;font-size:10px;color:var(--text2);pointer-events:none"></span>
+        <span id="abbr-count" style="position:absolute;right:7px;font-size: calc(10px * var(--fscale, 1));color:var(--text2);pointer-events:none"></span>
       </div>
       <div id="abbr-dropdown" style="display:none;position:fixed;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px;width:460px;max-height:340px;overflow-y:auto;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.12)">
         <div id="abbr-grid-drop" style="display:grid;grid-template-columns:1fr"></div>
@@ -263,7 +274,7 @@
         <div>GRADE 시스템: <strong>강력 권고(1) = "recommend"</strong>, <strong>약한 제안(2) = "suggest"</strong>. 증거 수준: ⊕⊕⊕⊕ 높음 / ⊕⊕⊕○ 중등 / ⊕⊕○○ 낮음 / ⊕○○○ 매우 낮음.</div>
       </div>
 
-      <div style="font-size:11px;font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.1 — 외인성 GC 배제 (필수 선행 조건)</div>
+      <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.1 — 외인성 GC 배제 (필수 선행 조건)</div>
       <ul class="rec-list">
         <li class="rec-item">
           <div class="rec-badges"><span class="rec-num">3.1</span><span class="grade grade-strong-high" data-tip="Strong recommendation, high-quality evidence (1⊕⊕⊕⊕)">1/High</span></div>
@@ -271,7 +282,7 @@
         </li>
       </ul>
 
-      <div style="font-size:11px;font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.2–3.3 — 검사 대상</div>
+      <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.2–3.3 — 검사 대상</div>
       <ul class="rec-list">
         <li class="rec-item">
           <div class="rec-badges"><span class="rec-num">3.2</span><span class="grade grade-strong-low" data-tip="Strong recommendation, low-quality evidence (1⊕⊕○○)">1/Low</span></div>
@@ -283,7 +294,7 @@
         </li>
       </ul>
 
-      <div style="font-size:11px;font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.4–3.8 — 초기 검사</div>
+      <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.4–3.8 — 초기 검사</div>
       <ul class="rec-list">
         <li class="rec-item">
           <div class="rec-badges"><span class="rec-num">3.4</span><span class="grade grade-strong-vlow" data-tip="Strong recommendation, very low-quality evidence (1⊕○○○)">1/VLow</span></div>
@@ -307,7 +318,7 @@
         </li>
       </ul>
 
-      <div style="font-size:11px;font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.9 — 후속 평가</div>
+      <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">3.9 — 후속 평가</div>
       <ul class="rec-list">
         <li class="rec-item">
           <div class="rec-badges"><span class="rec-num">3.9</span><span class="grade grade-strong-vlow" data-tip="Strong recommendation, very low-quality evidence (1⊕○○○)">1/VLow</span></div>
@@ -335,7 +346,7 @@
         </li>
       </ul>
 
-      <div style="font-size:11px;font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">4.0 — 특수 상황</div>
+      <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--text2);margin:8px 0 4px;text-transform:uppercase;letter-spacing:0.5px">4.0 — 특수 상황</div>
       <ul class="rec-list">
         <li class="rec-item">
           <div class="rec-badges"><span class="rec-num">4.1</span><span class="grade grade-strong-mod" data-tip="Strong recommendation, moderate-quality evidence (1⊕⊕⊕○)">1/Mod</span></div>
@@ -370,7 +381,7 @@
     <div class="card-body">
       <div class="grid2" style="gap:10px">
         <div>
-          <div style="font-size:11px;font-weight:700;color:var(--red);margin-bottom:4px;text-transform:uppercase">고감별 징후 (Higher discriminatory value)</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--red);margin-bottom:4px;text-transform:uppercase">고감별 징후 (Higher discriminatory value)</div>
           <ul class="blist">
             <li>쉽게 생기는 멍 (Easy bruising)</li>
             <li>안면 다혈 (Facial plethora)</li>
@@ -380,7 +391,7 @@
           </ul>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:700;color:var(--yellow);margin-bottom:4px;text-transform:uppercase">흔하지만 비특이적 소견</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--yellow);margin-bottom:4px;text-transform:uppercase">흔하지만 비특이적 소견</div>
           <ul class="blist">
             <li>우울, 피로, 불면증</li>
             <li>체중증가, 등쪽 지방패드 (buffalo hump)</li>
@@ -391,7 +402,7 @@
         </div>
       </div>
       <div class="sec-sep"></div>
-      <div style="font-size:11px;font-weight:700;color:var(--text2);margin-bottom:4px;text-transform:uppercase">중복 동반 질환 (쿠싱증후군에서도 흔하지만 일반 인구에서도 흔함)</div>
+      <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;color:var(--text2);margin-bottom:4px;text-transform:uppercase">중복 동반 질환 (쿠싱증후군에서도 흔하지만 일반 인구에서도 흔함)</div>
       <div class="grid3" style="gap:6px">
         <div class="alert alert-warn" style="margin:0">
           <span>📌</span><div>고혈압<br>제2형 당뇨병<br>다낭성 난소 증후군</div>
@@ -419,7 +430,7 @@
     <div class="card-body">
       <div class="grid2" style="gap:10px">
         <div>
-          <div style="font-size:11px;font-weight:700;margin-bottom:4px;color:var(--red)">일부 임상 특징 동반 가능</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;margin-bottom:4px;color:var(--red)">일부 임상 특징 동반 가능</div>
           <ul class="blist">
             <li>임신</li>
             <li>우울증 및 기타 정신과 질환</li>
@@ -430,7 +441,7 @@
           </ul>
         </div>
         <div>
-          <div style="font-size:11px;font-weight:700;margin-bottom:4px;color:var(--yellow)">임상 특징 없을 가능성 높음</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));font-weight:700;margin-bottom:4px;color:var(--yellow)">임상 특징 없을 가능성 높음</div>
           <ul class="blist">
             <li>신체적 스트레스 (입원, 수술, 통증)</li>
             <li>영양 불량, 신경성 식욕부진</li>
@@ -554,22 +565,22 @@
       <div class="flow-split">
         <div>
           <div class="flow-end-ok">정상 결과</div>
-          <div style="font-size:11px;margin-top:4px;text-align:center;color:var(--text2)">쿠싱 가능성 낮음<br>→ 6개월 후 재평가 (증상 진행 시)<br>단, 사전 확률 높으면 내분비 전문의 의뢰</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));margin-top:4px;text-align:center;color:var(--text2)">쿠싱 가능성 낮음<br>→ 6개월 후 재평가 (증상 진행 시)<br>단, 사전 확률 높으면 내분비 전문의 의뢰</div>
         </div>
         <div>
           <div class="flow-end-bad">이상 결과</div>
-          <div style="font-size:11px;margin-top:4px;text-align:center;color:var(--text2)">내분비 전문의 의뢰<br>→ 다른 권고 검사 추가<br>또는 Dex-CRH / 자정 혈청 cortisol</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));margin-top:4px;text-align:center;color:var(--text2)">내분비 전문의 의뢰<br>→ 다른 권고 검사 추가<br>또는 Dex-CRH / 자정 혈청 cortisol</div>
         </div>
       </div>
       <div class="flow-arrow">↓</div>
       <div class="flow-split">
         <div>
           <div class="flow-end-ok">두 검사 모두 정상 (일치)</div>
-          <div style="font-size:11px;margin-top:4px;text-align:center;color:var(--text2)">추가 검사 불필요<br>(주기성 쿠싱 의심 제외)</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));margin-top:4px;text-align:center;color:var(--text2)">추가 검사 불필요<br>(주기성 쿠싱 의심 제외)</div>
         </div>
         <div>
           <div class="flow-end-bad">두 검사 모두 이상 (일치)</div>
-          <div style="font-size:11px;margin-top:4px;text-align:center;color:var(--text2)">비쿠싱 고코르티솔혈증 배제 후<br>원인 규명 검사 진행</div>
+          <div style="font-size: calc(11px * var(--fscale, 1));margin-top:4px;text-align:center;color:var(--text2)">비쿠싱 고코르티솔혈증 배제 후<br>원인 규명 검사 진행</div>
         </div>
       </div>
       <div class="flow-arrow">↓</div>
@@ -776,7 +787,7 @@
       <div class="alert alert-orange" style="margin-top:6px">
         <span>💡</span>
         <div><strong>불일치 결과 평가 전략:</strong>
-        <ul style="margin-top:4px;padding-left:16px;font-size:12px">
+        <ul style="margin-top:4px;padding-left:16px;font-size: calc(12px * var(--fscale, 1))">
           <li>각 검사의 기술적 한계(과채집, CBG 변화, 약물 영향) 재검토</li>
           <li>비쿠싱 고코르티솔혈증 원인(Table 2) 치료 또는 해소 후 재검사</li>
           <li>임상·생화학 소견 축적을 기다리는 경우 경증 고코르티솔혈증에서는 최소 위험</li>
@@ -921,7 +932,7 @@
       <div class="alert alert-info" style="margin-top:8px">
         <span>ℹ️</span>
         <div><strong>실용적 조치:</strong>
-        <ul style="margin-top:4px;padding-left:16px;font-size:12px">
+        <ul style="margin-top:4px;padding-left:16px;font-size: calc(12px * var(--fscale, 1))">
           <li>에스트로겐 함유 약물: 검사 전 <strong>6주 중단</strong> 권장 (또는 경구 대신 경피 투여로 전환 — CBG 상승 없음)</li>
           <li>항경련제: 중단 불가 시 DST 대신 UFC, 타액/혈청 심야 코르티솔 사용</li>
           <li>의심스러운 경우: DST 시점에 dexamethasone 혈중 농도 동시 측정 (≥5.6 nmol/L 확인)</li>
@@ -977,6 +988,20 @@
 </div><!-- /main -->
 
 <script>
+const FONT_ZOOM_LEVELS = [1, 1.25, 1.5];
+let fontZoomIndex = 0;
+
+function applyFontZoom(scale) {
+  document.documentElement.style.setProperty('--fscale', scale);
+  const label = document.getElementById('font-zoom-label');
+  if (label) label.textContent = Math.round(scale * 100) + '%';
+}
+
+function cycleFontZoom() {
+  fontZoomIndex = (fontZoomIndex + 1) % FONT_ZOOM_LEVELS.length;
+  applyFontZoom(FONT_ZOOM_LEVELS[fontZoomIndex]);
+}
+
 /* ── Tab ── */
 function showTab(id) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
